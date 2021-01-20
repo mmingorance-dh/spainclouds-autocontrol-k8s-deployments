@@ -5,7 +5,10 @@ metadata:
 spec:
   match:
     kinds:
+      - apiGroups: ["apps"]
+        kinds: ["Deployment"]
       - apiGroups: [""]
-        kinds: ["Deployment", "Pod"]
+        kinds: ["Pod"]
+    excludedNamespaces: ["utils"]
   parameters:
     labels: ["servicio", "version", "equipo"]

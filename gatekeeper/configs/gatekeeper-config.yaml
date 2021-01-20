@@ -1,11 +1,11 @@
 apiVersion: config.gatekeeper.sh/v1alpha1
 kind: Config
 metadata:
-  name: gatekeeper-config
+  name: config
   namespace: "gatekeeper-system"
 spec:
   match:
-    - excludedNamespaces: [ "kube-system", "gatekeeper-system" ]
+    - excludedNamespaces: [ "kube-system", "gatekeeper-system", "local-path-storage" ]
       processes: [ "*" ]
   sync:
     syncOnly:

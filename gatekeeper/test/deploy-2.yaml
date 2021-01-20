@@ -4,22 +4,22 @@ metadata:
   labels:
     servicio: test-label
     version: v1
-    equipo: miguel
-  name: test-label
+    equipo: christos
+  name: test-label-2
 spec:
   replicas: 1
   selector:
     matchLabels:
       servicio: test-label
       version: v1
-      equipo: miguel
+      equipo: christos
   strategy: {}
   template:
     metadata:
       labels:
         servicio: test-label
         version: v1
-        equipo: miguel
+        equipo: christos
     spec:
       containers:
       - image: nginx

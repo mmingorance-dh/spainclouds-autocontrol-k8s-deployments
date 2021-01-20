@@ -18,6 +18,8 @@ releases:
   - name: metrics-server
     namespace: utils
     chart: bitnami/metrics-server
+    values:
+      - "../values/metrics-server.yaml"
 
   - name: nginx-ingress-controller
     namespace: utils
