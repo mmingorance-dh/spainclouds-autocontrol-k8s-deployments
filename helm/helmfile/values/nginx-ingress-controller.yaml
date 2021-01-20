@@ -1,0 +1,18 @@
+controller:
+  replicaCount: 1
+
+  service:
+    targetPorts:
+      http: 80
+      https: 80
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 500Mi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+
+defaultBackend:
+  enabled: true
