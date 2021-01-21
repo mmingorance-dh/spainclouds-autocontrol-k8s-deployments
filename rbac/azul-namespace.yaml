@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: desarrollador
+  namespace: azul
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: desarrollador
+subjects:
+- kind: User
+  name: equipo-azul
+  apiGroup: rbac.authorization.k8s.io

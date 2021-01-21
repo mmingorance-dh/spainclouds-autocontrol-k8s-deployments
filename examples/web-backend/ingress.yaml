@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-backend
+  namespace: rojo
+  labels:
+    servicio: web-backend
+    version: v1
+    equipo: rojo
+spec:
+  rules:
+  - host: backend-st.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: nginx
+          servicePort: 80

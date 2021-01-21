@@ -1,0 +1,44 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: k8singressalloweddomains
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sIngressAllowedDomains
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8singressalloweddomains
+
+        violation[{"msg": msg, "details": {"invalid_ingress_domain": host}}] {
+          input.request.kind.kind == "Ingress"
+          host := input.request.object.spec.rules[_].host
+          not fqdn_matches_any(host, valid_ingress_hosts)
+          msg := sprintf("invalid ingress host %q", [host])
+        }
+
+        valid_ingress_hosts = {host |
+          whitelist := {domain | domain := input.parameters.domains[_]}
+          host := whitelist[_]
+        }
+
+        fqdn_matches_any(str, patterns) {
+          fqdn_matches(str, patterns[_])
+        }
+
+        fqdn_matches(str, pattern) {
+          pattern_parts := split(pattern, ".")
+          contains(pattern_parts[0], "*")
+          str_parts := split(str, ".")
+          n_pattern_parts := count(pattern_parts)
+          n_str_parts := count(str_parts)
+          suffix := trim(pattern, "*.")
+          endswith(str, suffix)
+        }
+
+        fqdn_matches(str, pattern) {
+          not contains(pattern, "*")
+          str == pattern
+        }

@@ -23,5 +23,14 @@ spec:
           required := {label | label := input.parameters.labels[_]}
           missing := required - provided
           count(missing) > 0
-          msg := sprintf("you must provide labels: %v", [missing])
+          msg := sprintf("Required labels are missing: %v", [missing])
+        }
+
+        violation[{"msg": msg, "details": {"missing_match_labels": missing}}] {
+          input.review.kind.kind == "Deployment"
+          provided := {label | input.review.object.spec.selector.matchLabels[label]}
+          required := {label | label := input.parameters.labels[_]}
+          missing := required - provided
+          count(missing) > 0
+          msg := sprintf("Required matchLabels are missing: %v", [missing])
         }

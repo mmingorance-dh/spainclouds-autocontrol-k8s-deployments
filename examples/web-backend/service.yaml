@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    equipo: rojo
+    servicio: web-backend
+    version: v1
+  name: web-backend
+  namespace: rojo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    equipo: rojo
+    servicio: web-backend
+    version: v1
+  type: ClusterIP

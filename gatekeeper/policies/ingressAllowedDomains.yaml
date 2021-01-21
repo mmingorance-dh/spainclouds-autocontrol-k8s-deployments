@@ -1,0 +1,14 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sIngressAllowedDomains
+metadata:
+  name: ingress-allowed-domains
+spec:
+  match:
+    kinds:
+      - apiGroups: ["extensions", "networking.k8s.io"]
+        kinds: ["Ingress"]
+    excludedNamespaces: ["utils"]
+  parameters:
+    domains:
+      - "*-st.example.com"
+      - "*-st.api.com"

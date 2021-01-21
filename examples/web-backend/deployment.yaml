@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: web-backend
+  namespace: rojo
   labels:
-    servicio: test-label
+    servicio: web-backend
     version: v1
-    equipo: christos
-  name: test-label-2
+    equipo: rojo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: test-label
+      servicio: web-backend
       version: v1
-      equipo: christos
+      equipo: rojo
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: test-label
+        servicio: web-backend
         version: v1
-        equipo: christos
+        equipo: rojo
     spec:
       containers:
       - image: nginx

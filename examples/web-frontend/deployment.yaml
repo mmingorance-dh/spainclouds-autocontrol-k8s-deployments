@@ -1,25 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: web-frontend
+  namespace: azul
   labels:
-    servicio: test-label
+    servicio: web-frontend
     version: v1
-    equipo: miguel
-  name: test-label
+    equipo: azul
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: test-label
+      servicio: web-frontend
       version: v1
-      equipo: miguel
+      equipo: azul
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: test-label
+        servicio: web-frontend
         version: v1
-        equipo: miguel
+        equipo: azul
     spec:
       containers:
       - image: nginx
