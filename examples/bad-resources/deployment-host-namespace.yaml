@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-frontend-host-namespace
+  namespace: naranja
+  labels:
+    servicio: web-frontend-host-namespace
+    version: v2
+    equipo: naranja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      servicio: web-frontend-host-namespace
+      version: v2
+      equipo: naranja
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        servicio: web-frontend-host-namespace
+        version: v2
+        equipo: naranja
+    spec:
+      hostPID: true
+      hostIPC: true
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}

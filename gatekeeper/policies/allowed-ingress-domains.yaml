@@ -1,7 +1,7 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sIngressAllowedDomains
+kind: IngressAllowedDomains
 metadata:
-  name: ingress-allowed-domains
+  name: allowed-ingress-domains
 spec:
   match:
     kinds:

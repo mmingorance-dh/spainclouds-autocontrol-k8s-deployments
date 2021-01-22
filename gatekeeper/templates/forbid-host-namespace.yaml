@@ -1,0 +1,33 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: forbidhostnamespace
+spec:
+  crd:
+    spec:
+      names:
+        kind: ForbidHostNamespace
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package forbidhostnamespace
+        violation[{"msg": msg, "details": {"pod_with_host_namespace": objectName}}] {
+            objectKind := input.review.kind.kind
+            objectName := input.review.object.metadata.name
+            input_share_hostnamespace(input.review.object)
+            msg := sprintf("%v/%v - Sharing the host namespace is not allowed", [objectKind, objectName])
+        }
+        input_share_hostnamespace(o) {
+            o.spec.hostPID
+        }
+        input_share_hostnamespace(o) {
+            o.spec.hostIPC
+        }
+
+        input_share_hostnamespace(o) {
+            o.spec.template.spec.hostPID
+        }
+
+        input_share_hostnamespace(o) {
+            o.spec.template.spec.hostIPC
+        }
