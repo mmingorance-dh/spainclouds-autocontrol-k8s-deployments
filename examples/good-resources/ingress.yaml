@@ -9,7 +9,7 @@ metadata:
     equipo: rojo
 spec:
   rules:
-  - host: backend-st.example.com
+  - host: backend-st.api.com
     http:
       paths:
       - backend:

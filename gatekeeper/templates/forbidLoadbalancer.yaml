@@ -13,8 +13,9 @@ spec:
         package k8sforbidloadbalancer
 
         violation[{"msg": msg, "details": {"loadbalancer_forbidden": ns}}] {
-          input.request.kind.kind == "Service"
-          input.request.object.spec.type == "LoadBalancer"
-          ns := input.request.object.metadata.namespace
-          msg := sprintf("LoadBalancer Services are not permitted in namespace %v", [ns])
+          input.review.kind.kind == "Service"
+          objectName := input.review.object.metadata.name
+          input.review.object.spec.type == "LoadBalancer"
+          ns := input.review.object.metadata.namespace
+          msg := sprintf("Service/%v - LoadBalancer Services are not permitted in namespace %v", [objectName, ns])
         }

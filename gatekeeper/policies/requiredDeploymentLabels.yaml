@@ -9,6 +9,8 @@ spec:
         kinds: ["Deployment"]
       - apiGroups: [""]
         kinds: ["Pod"]
+      - apiGroups: [ "" ]
+        kinds: [ "Service" ]
       - apiGroups: [ "extensions", "networking.k8s.io" ]
         kinds: [ "Ingress" ]
     excludedNamespaces: ["utils"]

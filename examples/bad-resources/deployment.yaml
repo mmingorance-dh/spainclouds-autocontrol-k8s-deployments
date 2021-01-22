@@ -6,14 +6,11 @@ metadata:
   labels:
     servicio: web-frontend
     version: v1
-    equipo: azul
 spec:
   replicas: 1
   selector:
     matchLabels:
       servicio: web-frontend
-      version: v1
-      equipo: azul
   strategy: {}
   template:
     metadata:

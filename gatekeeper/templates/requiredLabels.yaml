@@ -19,18 +19,21 @@ spec:
         package k8srequiredlabels
 
         violation[{"msg": msg, "details": {"missing_labels": missing}}] {
+          objectKind := input.review.kind.kind
+          objectName := input.review.object.metadata.name
           provided := {label | input.review.object.metadata.labels[label]}
           required := {label | label := input.parameters.labels[_]}
           missing := required - provided
           count(missing) > 0
-          msg := sprintf("Required labels are missing: %v", [missing])
+          msg := sprintf("%v/%v - Required labels are missing: %v", [objectKind, objectName, missing])
         }
 
         violation[{"msg": msg, "details": {"missing_match_labels": missing}}] {
           input.review.kind.kind == "Deployment"
+          objectName := input.review.object.metadata.name
           provided := {label | input.review.object.spec.selector.matchLabels[label]}
           required := {label | label := input.parameters.labels[_]}
           missing := required - provided
           count(missing) > 0
-          msg := sprintf("Required matchLabels are missing: %v", [missing])
+          msg := sprintf("Deployment/%v - Required matchLabels are missing: %v", [objectName, missing])
         }

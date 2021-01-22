@@ -5,6 +5,7 @@ helmDefaults:
   timeout: 1200
   force: false
   createNamespace: true
+  kubeContext: kind-spainclouds
 
 repositories:
 - name: bitnami
