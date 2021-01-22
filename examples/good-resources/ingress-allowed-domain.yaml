@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-backend
+  namespace: verde
+  labels:
+    servicio: web-backend
+    version: v1
+    equipo: verde
+spec:
+  rules:
+  - host: backend-st.api.com
+    http:
+      paths:
+      - backend:
+          serviceName: nginx
+          servicePort: 80

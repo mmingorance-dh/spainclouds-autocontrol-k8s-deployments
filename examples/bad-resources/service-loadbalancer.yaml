@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    equipo: naranja
+    servicio: web-frontend
+    version: v1
+  name: web-frontend
+  namespace: naranja
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    equipo: naranja
+    servicio: web-frontend
+    version: v1
+  type: LoadBalancer

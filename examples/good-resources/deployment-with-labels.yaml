@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-backend
+  namespace: verde
+  labels:
+    servicio: web-backend
+    version: v1
+    equipo: verde
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      servicio: web-backend
+      version: v1
+      equipo: verde
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        servicio: web-backend
+        version: v1
+        equipo: verde
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}

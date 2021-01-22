@@ -1,0 +1,21 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: forbidloadbalancer
+spec:
+  crd:
+    spec:
+      names:
+        kind: ForbidLoadbalancer
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package forbidloadbalancer
+
+        violation[{"msg": msg, "details": {"loadbalancer_forbidden": ns}}] {
+          input.review.kind.kind == "Service"
+          objectName := input.review.object.metadata.name
+          input.review.object.spec.type == "LoadBalancer"
+          ns := input.review.object.metadata.namespace
+          msg := sprintf("Service/%v - LoadBalancer Services are not permitted in namespace %v", [objectName, ns])
+        }

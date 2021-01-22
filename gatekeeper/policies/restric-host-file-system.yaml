@@ -1,0 +1,15 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: RestrictHostFilesystem
+metadata:
+  name: restrict-host-filesystem
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+      - apiGroups: [ "apps" ]
+        kinds: [ "Deployment" ]
+  parameters:
+    allowedHostPaths:
+    - readOnly: true
+      pathPrefix: "/foo"

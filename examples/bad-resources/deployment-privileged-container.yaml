@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-frontend-privileged
+  namespace: naranja
+  labels:
+    servicio: web-frontend-privileged
+    version: v2
+    equipo: naranja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      servicio: web-frontend-privileged
+      version: v2
+      equipo: naranja
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        servicio: web-frontend-privileged
+        version: v2
+        equipo: naranja
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+        securityContext:
+          privileged: true
