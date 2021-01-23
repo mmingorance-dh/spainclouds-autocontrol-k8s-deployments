@@ -13,7 +13,7 @@ controller:
     targetPorts:
       http: 80
       https: 80
-    externalIPs:
+    externalIPs: # Reemplazar con la direccion/es IP de tu ordenador local
       - 192.168.178.40
       - 192.168.178.20
 

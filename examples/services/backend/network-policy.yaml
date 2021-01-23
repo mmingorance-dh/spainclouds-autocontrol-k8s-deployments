@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-infra-namespaces-to-backend
+  namespace: verde
+  labels:
+    servicio: backend
+    version: v1
+    equipo: verde
+spec:
+  podSelector:
+    matchLabels:
+      servicio: backend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          equipo: infra
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend-to-backend
+  namespace: verde
+  labels:
+    servicio: backend
+    version: v1
+    equipo: verde
+spec:
+  podSelector:
+    matchLabels:
+      servicio: backend
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          equipo: naranja
+    - podSelector:
+        matchLabels:
+          servicio: frontend
+    ports:
+    - protocol: TCP
+      port: 4040

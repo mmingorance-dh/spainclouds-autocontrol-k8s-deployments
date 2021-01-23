@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: naranja
+  labels:
+    servicio: frontend
+    version: v1
+    equipo: naranja
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      servicio: frontend
+      version: v1
+      equipo: naranja
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        servicio: frontend
+        version: v1
+        equipo: naranja
+    spec:
+      containers:
+      - image: mmingorance/demo-service
+        name: frontend
+        resources:
+          requests:
+            cpu: 300m
+            memory: 200Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
+        env:
+          - name: "API_HOST"
+            value: "http://backend.verde"
+        ports:
+          - name: http
+            containerPort: 4040
+            protocol: TCP

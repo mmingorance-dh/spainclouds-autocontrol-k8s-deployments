@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: naranja
+  labels:
+    servicio: frontend
+    version: v1
+    equipo: naranja
+spec:
+  rules:
+  - host: www-st.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: frontend
+          servicePort: 80
