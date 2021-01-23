@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: verde
+  labels:
+    servicio: backend
+    version: v1
+    equipo: verde
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      servicio: backend
+      version: v1
+      equipo: verde
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        servicio: backend
+        version: v1
+        equipo: verde
+    spec:
+      containers:
+      - image: mmingorance/amazing-api
+        name: api
+        resources:
+          requests:
+            cpu: 300m
+            memory: 200Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
+        ports:
+          - name: http
+            containerPort: 4040
+            protocol: TCP
