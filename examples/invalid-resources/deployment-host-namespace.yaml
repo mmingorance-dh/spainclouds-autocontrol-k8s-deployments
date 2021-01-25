@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-frontend-host-namespace
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: web-frontend-host-namespace
+    service: web-frontend-host-namespace
     version: v2
-    equipo: naranja
+    team: orange
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: web-frontend-host-namespace
+      service: web-frontend-host-namespace
       version: v2
-      equipo: naranja
+      team: orange
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: web-frontend-host-namespace
+        service: web-frontend-host-namespace
         version: v2
-        equipo: naranja
+        team: orange
     spec:
       hostPID: true
       hostIPC: true

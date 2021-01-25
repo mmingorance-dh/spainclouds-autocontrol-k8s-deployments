@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: storage-resources
-  namespace: naranja
+  namespace: orange
 spec:
   hard:
     requests.storage: "5Gi"

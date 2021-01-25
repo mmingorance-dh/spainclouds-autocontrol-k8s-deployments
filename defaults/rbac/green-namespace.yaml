@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
-  name: desarrollador
-  namespace: verde
+  name: developer
+  namespace: green
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: desarrollador
+  name: developer
 subjects:
 - kind: User
-  name: equipo-verde
+  name: team-green
   apiGroup: rbac.authorization.k8s.io

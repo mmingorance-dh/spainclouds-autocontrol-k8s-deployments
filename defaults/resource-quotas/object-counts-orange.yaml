@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: object-counts
-  namespace: verde
+  namespace: orange
 spec:
   hard:
     configmaps: "20"

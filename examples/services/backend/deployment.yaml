@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: verde
+  namespace: green
   labels:
-    servicio: backend
+    service: backend
     version: v1
-    equipo: verde
+    team: green
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: backend
+      service: backend
       version: v1
-      equipo: verde
+      team: green
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: backend
+        service: backend
         version: v1
-        equipo: verde
+        team: green
     spec:
       containers:
       - image: mmingorance/amazing-api

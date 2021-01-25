@@ -2,11 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: web-backend
-  namespace: verde
+  namespace: green
   labels:
-    servicio: web-backend
+    service: web-backend
     version: v1
-    equipo: verde
+    team: green
 spec:
   rules:
   - host: backend-st.api.com

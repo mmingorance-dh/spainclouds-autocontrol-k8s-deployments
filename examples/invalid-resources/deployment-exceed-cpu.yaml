@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-frontend-exceed-cpu
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: web-frontend-exceed-cpu
+    service: web-frontend-exceed-cpu
     version: v3
-    equipo: naranja
+    team: orange
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: web-frontend-exceed-cpu
+      service: web-frontend-exceed-cpu
       version: v3
-      equipo: naranja
+      team: orange
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: web-frontend-exceed-cpu
+        service: web-frontend-exceed-cpu
         version: v3
-        equipo: naranja
+        team: orange
     spec:
       containers:
       - image: nginx

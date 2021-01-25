@@ -2,11 +2,11 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: web
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: web-frontend
+    service: web-frontend
     version: v1
-    equipo: naranja
+    team: orange
 spec:
   rules:
   - host: www.example.com

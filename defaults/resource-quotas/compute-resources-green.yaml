@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: compute-resources
-  namespace: verde
+  namespace: green
 spec:
   hard:
     requests.cpu: "1"

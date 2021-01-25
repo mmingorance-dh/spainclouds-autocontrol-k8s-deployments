@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-infra-namespaces-to-frontend
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: frontend
+    service: frontend
     version: v1
-    equipo: naranja
+    team: orange
 spec:
   podSelector:
     matchLabels:
