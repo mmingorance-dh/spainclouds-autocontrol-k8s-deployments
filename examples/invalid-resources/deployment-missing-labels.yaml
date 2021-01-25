@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-frontend
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: web-frontend
+    service: web-frontend
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: web-frontend
+      service: web-frontend
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: web-frontend
+        service: web-frontend
         version: v1
-        equipo: naranja
+        team: orange
     spec:
       containers:
       - image: nginx

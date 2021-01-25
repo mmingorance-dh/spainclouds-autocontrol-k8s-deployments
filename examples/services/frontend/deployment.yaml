@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: naranja
+  namespace: orange
   labels:
-    servicio: frontend
+    service: frontend
     version: v1
-    equipo: naranja
+    team: orange
 spec:
   replicas: 1
   selector:
     matchLabels:
-      servicio: frontend
+      service: frontend
       version: v1
-      equipo: naranja
+      team: orange
   strategy: {}
   template:
     metadata:
       labels:
-        servicio: frontend
+        service: frontend
         version: v1
-        equipo: naranja
+        team: orange
     spec:
       containers:
       - image: mmingorance/demo-service

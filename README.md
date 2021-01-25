@@ -2,8 +2,8 @@
 En este repositorio encontraras codigo de demostracion para llevar a cabo una administracion segura, eficiente y automatizada 
 de tus despliegues en Kubernetes.
 
-Con el uso de [OPA](https://www.openpolicyagent.org/) y [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-podemos llegar a mantener un entorno seguro donde nuestros desarrolladores puedan desplegar sus aplicaciones sin la supervision previa de un equipo de sistemas.
+Con el uso de [OPA](https://www.openpolicyagent.org/) [Kubernetes Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+y [Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) podemos llegar a mantener un entorno seguro donde nuestros desarrolladores puedan desplegar sus aplicaciones sin la supervision previa de un equipo de sistemas.
 
 Para probar todo el codigo de demostracion que encontraremos en este repositorio, necesitamos correr 
 un cluster de Kubernetes, pues todos los recursos que encontraras en esta demo estan exclusivamente
@@ -68,11 +68,11 @@ Con anterioridad hemos instalado un network policy por defecto en cada uno de lo
 Ahora vamos a probar como funciona.
 1. Despliega los servicios de prueba que encontraras en `examples/services`
 2. Probemos como el network policy por defecto cancela el trafico del servicio *backend* al servicio *frontend*
-    1. Accede al pod del servicio *backend* que corre en el namespace *verde* - `kubectl exec -it <POD_NAME> -n verde -- bash`
-    2. Corre el comando: `nc -vz frontend.naranja 80` y veras como no se establece la conexion
+    1. Accede al pod del servicio *backend* que corre en el namespace *green* - `kubectl exec -it <POD_NAME> -n green -- bash`
+    2. Corre el comando: `nc -vz frontend.orange 80` y veras como no se establece la conexion
 3. Probemos como el network policy del servicio *frontend* si que permite el trafico desde el servicio *backend*
-    1. Accede al pod del servicio *frontend* que corre en el namespace *naranja* - `kubectl exec -it <POD_NAME> -n naranja -- bash`
-    2. Corre el comando: `nc -vz backend.verde 80` y veras como SI que se establece la conexion
+    1. Accede al pod del servicio *frontend* que corre en el namespace *orange* - `kubectl exec -it <POD_NAME> -n orange -- bash`
+    2. Corre el comando: `nc -vz backend.green 80` y veras como SI que se establece la conexion
 
 # Resource Quotas
 Durante el paso de creacion del cluster, hemos creados algunas cuotas para limitar el uso de los recusos de Kubernetes dentro de 
