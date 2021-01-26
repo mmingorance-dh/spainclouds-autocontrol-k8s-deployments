@@ -5,8 +5,8 @@ metadata:
   namespace: green
 spec:
   hard:
-    configmaps: "20"
-    deployments.apps: "10"
-    pods: "50"
-    secrets: "10"
-    services: "10"
+    count/configmaps: "20"
+    count/deployments.apps: "10"
+    count/pods: "50"
+    count/secrets: "10"
+    count/services: "10"

@@ -2,17 +2,18 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    team: green
-    service: web-backend
+    service: infra-test
     version: v1
-  name: web-backend
+    team: infra
+  name: infra-test
+  namespace: utils
 spec:
   ports:
   - port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: 4040
   selector:
-    team: green
-    service: web-backend
+    service: infra-test
     version: v1
+    team: infra
   type: ClusterIP

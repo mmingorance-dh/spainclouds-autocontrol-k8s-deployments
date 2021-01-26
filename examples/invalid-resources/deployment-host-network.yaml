@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-frontend-host-network
-  namespace: orange
   labels:
     service: web-frontend-host-network
     version: v2

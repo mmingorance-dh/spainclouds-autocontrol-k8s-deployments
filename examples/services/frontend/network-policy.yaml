@@ -10,11 +10,11 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      servicio: frontend
+      service: frontend
   policyTypes:
   - Ingress
   ingress:
   - from:
     - namespaceSelector:
         matchLabels:
-          equipo: infra
+          team: infra
