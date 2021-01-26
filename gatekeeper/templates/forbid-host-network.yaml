@@ -16,7 +16,7 @@ spec:
             objectName := input.review.object.metadata.name
             input.review.object
             input_share_hostnamespace(input.review.object)
-            msg := sprintf("%v/%v - Sharing the host network is not allowed", [objectKind, objectName])
+            msg := sprintf("%v/%v - Sharing the host network is not allowed - Remove <hostNetwork>", [objectKind, objectName])
         }
         input_share_hostnamespace(o) {
             o.spec.hostNetwork

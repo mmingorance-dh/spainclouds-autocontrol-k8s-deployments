@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-backend
-  namespace: green
   labels:
     service: web-backend
     version: v1

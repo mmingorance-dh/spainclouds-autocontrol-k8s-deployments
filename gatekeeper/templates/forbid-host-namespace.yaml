@@ -15,7 +15,7 @@ spec:
             objectKind := input.review.kind.kind
             objectName := input.review.object.metadata.name
             input_share_hostnamespace(input.review.object)
-            msg := sprintf("%v/%v - Sharing the host namespace is not allowed", [objectKind, objectName])
+            msg := sprintf("%v/%v - Sharing the host namespaces is not allowed - Remove <hostPID> and/or <hostIPC>", [objectKind, objectName])
         }
         input_share_hostnamespace(o) {
             o.spec.hostPID

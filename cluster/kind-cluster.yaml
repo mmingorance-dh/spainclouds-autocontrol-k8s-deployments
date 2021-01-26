@@ -13,30 +13,6 @@ nodes:
       nodeRegistration:
         kubeletExtraArgs:
           node-labels: "node-role=master"
-- role: control-plane
-  image: kindest/node:v1.19.1@sha256:98cf5288864662e37115e362b23e4369c8c4a408f99cbc06e58ac30ddc721600
-  kubeadmConfigPatches:
-    - |
-      kind: InitConfiguration
-      nodeRegistration:
-        kubeletExtraArgs:
-          node-labels: "node-role=master"
-- role: control-plane
-  image: kindest/node:v1.19.1@sha256:98cf5288864662e37115e362b23e4369c8c4a408f99cbc06e58ac30ddc721600
-  kubeadmConfigPatches:
-    - |
-      kind: InitConfiguration
-      nodeRegistration:
-        kubeletExtraArgs:
-          node-labels: "node-role=master"
-- role: worker
-  image: kindest/node:v1.19.1@sha256:98cf5288864662e37115e362b23e4369c8c4a408f99cbc06e58ac30ddc721600
-  kubeadmConfigPatches:
-    - |
-      kind: JoinConfiguration
-      nodeRegistration:
-        kubeletExtraArgs:
-          node-labels: "node-role=worker,worker-role=default"
 - role: worker
   image: kindest/node:v1.19.1@sha256:98cf5288864662e37115e362b23e4369c8c4a408f99cbc06e58ac30ddc721600
   kubeadmConfigPatches:
@@ -61,12 +37,3 @@ nodes:
         - containerPort: 443
           hostPort: 443
           protocol: TCP
-- role: worker
-  image: kindest/node:v1.19.1@sha256:98cf5288864662e37115e362b23e4369c8c4a408f99cbc06e58ac30ddc721600
-  kubeadmConfigPatches:
-    - |
-      kind: JoinConfiguration
-      nodeRegistration:
-        kubeletExtraArgs:
-          node-labels: "node-role=worker,worker-role=monitoring"
-          register-with-taints: "worker-role/tools=true:NoSchedule"

@@ -3,7 +3,6 @@ kind: Pod
 metadata:
   name: nginx-host-filesystem
   labels:
-    app: nginx-host-filesystem
     service: web-frontend-privileged
     version: v2
     team: orange

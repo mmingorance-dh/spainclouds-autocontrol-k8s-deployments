@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infra-test
+  namespace: utils
+  labels:
+    service: infra-test
+    version: v1
+    team: infra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: infra-test
+      version: v1
+      team: infra
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: infra-test
+        version: v1
+        team: infra
+    spec:
+      containers:
+      - image: mmingorance/amazing-api
+        name: api
+        resources:
+          requests:
+            cpu: 300m
+            memory: 200Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
+        ports:
+          - name: http
+            containerPort: 4040
+            protocol: TCP

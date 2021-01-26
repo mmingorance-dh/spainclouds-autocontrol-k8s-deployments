@@ -15,4 +15,4 @@ spec:
         kinds: [ "Ingress" ]
     excludedNamespaces: ["utils"]
   parameters:
-    labels: ["servicio", "version", "equipo"]
+    labels: ["service", "version", "team"]
